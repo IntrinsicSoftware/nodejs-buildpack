@@ -80,17 +80,19 @@ npm_node_modules() {
 npm_rebuild() {
   local build_dir=${1:-}
 
-  if [ -e $build_dir/package.json ]; then
-    cd $build_dir
-    echo "Rebuilding any native modules"
-    npm rebuild --nodedir=$build_dir/.cloudfoundry/node 2>&1
-    if [ -e $build_dir/npm-shrinkwrap.json ]; then
-      echo "Installing any new modules (package.json + shrinkwrap)"
-    else
-      echo "Installing any new modules (package.json)"
-    fi
-    npm install --unsafe-perm --userconfig $build_dir/.npmrc 2>&1
-  else
-    echo "Skipping (no package.json)"
-  fi
+  # if [ -e $build_dir/package.json ]; then
+  #   cd $build_dir
+  #   echo "Rebuilding any native modules"
+  #   npm rebuild --nodedir=$build_dir/.cloudfoundry/node 2>&1
+  #   if [ -e $build_dir/npm-shrinkwrap.json ]; then
+  #     echo "Installing any new modules (package.json + shrinkwrap)"
+  #   else
+  #     echo "Installing any new modules (package.json)"
+  #   fi
+  #   npm install --unsafe-perm --userconfig $build_dir/.npmrc 2>&1
+  # else
+  #   echo "Skipping (no package.json)"
+  # fi
+
+  echo "Not running npm_rebuild"
 }
